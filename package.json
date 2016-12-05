@@ -1,0 +1,30 @@
+{
+  "name": "wobbuffetch",
+  "version": "0.0.1",
+  "description": "Reactive wrapper for Fetch API",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedrotcaraujo/wobbuffetch.git"
+  },
+  "keywords": [
+    "http",
+    "ajax",
+    "fetch",
+    "reactive",
+    "request"
+  ],
+  "author": "Pedro Araujo <pedrotcaraujo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pedrotcaraujo/wobbuffetch/issues"
+  },
+  "homepage": "https://github.com/pedrotcaraujo/wobbuffetch#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
