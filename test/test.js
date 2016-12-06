@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var expect = require('chai').expect;
-var wobbuffetch = require('../src/wobbuffetch');
+var expect = require('chai').expect
+var wobbuffetch = require('../src/wobbuffetch')
 
-describe('#wobbuffetch', function() {
-    it('should be defined', function() {
-        expect(wobbuffetch).to.not.be.undefined;
-    });
-});
+describe('#wobbuffetch', function () {
+  it('should be defined', function () {
+    expect(wobbuffetch).to.not.be.undefined
+  })
+})

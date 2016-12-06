@@ -5,7 +5,8 @@
   "main": "wobbuffetch.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha --reporter spec",
-    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
+    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*",
+    "lint": "node_modules/.bin/eslint ./src ./test"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,10 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "coveralls": "^2.11.15",
+    "eslint": "^3.11.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0"
   }
