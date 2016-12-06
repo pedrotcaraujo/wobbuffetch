@@ -1,7 +1,7 @@
 'use strict';
 
 var expect = require('chai').expect;
-var wobbuffetch = require('../index');
+var wobbuffetch = require('../src/wobbuffetch');
 
 describe('#wobbuffetch', function() {
     it('should be defined', function() {

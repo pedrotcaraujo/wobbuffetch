@@ -2,7 +2,7 @@
   "name": "wobbuffetch",
   "version": "0.0.1",
   "description": "Reactive wrapper for Fetch API",
-  "main": "index.js",
+  "main": "wobbuffetch.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha --reporter spec",
     "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
