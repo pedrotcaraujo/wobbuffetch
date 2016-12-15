@@ -1,10 +1,8 @@
-'use strict'
+import { expect } from 'chai'
+import wobbuffetch from '../src/wobbuffetch'
 
-var expect = require('chai').expect
-var wobbuffetch = require('../src/wobbuffetch')
-
-describe('#wobbuffetch', function () {
-  it('should be defined', function () {
+describe('#wobbuffetch', () => {
+  it('should be defined', () => {
     expect(wobbuffetch).to.not.be.undefined
   })
 })
