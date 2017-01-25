@@ -22,4 +22,4 @@ const wobbufetch = {
   }
 }
 
-export default wobbufetch
+module.exports = wobbufetch;
