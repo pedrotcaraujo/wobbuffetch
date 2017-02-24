@@ -5,15 +5,16 @@ module.exports = {
   entry: ['./src/wobbuffetch.js'],
   output: {
     path: path.resolve(__dirname, "dist"),
+    publicPath: '/assets/',
     libraryTarget: 'umd',
     library: 'wobbuffetch'
   },
   resolve: {
-    modulesDirectories: [path.resolve(process.cwd(), 'src'), 'node_modules'],
-    extensions: ['', '.js']
+    modules: [path.resolve(process.cwd(), 'src'), 'node_modules'],
+    extensions: ['.js']
   },
   module: {
-    loaders: [
+    rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
     ]
   }

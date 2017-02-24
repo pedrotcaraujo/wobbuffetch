@@ -4,7 +4,8 @@
   "description": "Reactive wrapper for Fetch API",
   "main": "dist/wobbuffetch.js",
   "scripts": {
-    "start": "json-server db.json --static ./",
+    "start": "webpack-dev-server --content-base ./ --output-filename wobbuffetch.js",
+    "api": "json-server db.json",
     "test": "mocha --compilers js:babel-register",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-core/register --colors --reporter spec test/",
     "lint": "eslint ./src ./test",
@@ -33,6 +34,7 @@
     "babel-cli": "^6.18.0",
     "babel-loader": "^6.2.10",
     "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.22.0",
     "chai": "^3.5.0",
     "coveralls": "^2.11.15",
     "eslint": "^3.11.1",
@@ -43,6 +45,12 @@
     "json-server": "^0.9.4",
     "mocha": "^3.2.0",
     "npm-run-all": "^4.0.1",
-    "webpack": "^1.14.0"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "dependencies": {
+    "es6-promise": "^4.0.5",
+    "isomorphic-fetch": "^2.2.1",
+    "rx": "^4.1.0"
   }
 }

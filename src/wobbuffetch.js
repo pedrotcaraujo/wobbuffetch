@@ -1,25 +1,12 @@
-/**
- * Define wobbufetch module
- */
-const wobbufetch = {
-  get: () => {
-    console.log('fetching get')
-  },
-  head: () => {
-    console.log('fetching head')
-  },
-  delete: () => {
-    console.log('fetching delete')
-  },
-  post: () => {
-    console.log('fetching post')
-  },
-  put: () => {
-    console.log('fetching put')
-  },
-  patch: () => {
-    console.log('fetching patch')
-  }
-}
+import { Observable } from 'rx'
+import localFetch from 'localFetch'
+import defaults from 'defaults'
 
-module.exports = wobbufetch;
+const wobbuffetch = { defaults }
+const METHODS = ['get', 'head', 'delete', 'post', 'put', 'patch']
+
+METHODS.forEach((method) => {
+  wobbuffetch[method] = (url, config) => Observable.fromPromise(localFetch(method, url, {...wobbuffetch.defaults, ...config}))
+})
+
+module.exports = wobbuffetch

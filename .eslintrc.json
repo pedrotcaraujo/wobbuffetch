@@ -5,6 +5,8 @@
       "promise"
     ],
     "env": {
-      "mocha": true
+      "mocha": true,
+      "browser": true,
+      "node": true
     }
 }
