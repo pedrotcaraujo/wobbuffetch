@@ -1,5 +1,5 @@
-import defaults from 'defaults'
-import observableRequest from 'observableRequest'
+import defaults from './defaults'
+import observableRequest from './observableRequest'
 
 const METHODS = ['get', 'head', 'delete', 'post', 'put', 'patch']
 

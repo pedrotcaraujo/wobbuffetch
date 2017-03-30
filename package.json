@@ -51,6 +51,7 @@
   "dependencies": {
     "es6-promise": "^4.0.5",
     "isomorphic-fetch": "^2.2.1",
+    "query-params": "0.0.1",
     "rx": "^4.1.0"
   }
 }
