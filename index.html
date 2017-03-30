@@ -18,52 +18,68 @@
       <div class="col-md-6">
           <h3>GET</h3>
           <div class="form-group">
-            <label for="url">URL</label>
-            <input class="form-control" type="text" id="url">
+            <label for="get">URL</label>
+            <input class="form-control" type="text" id="get">
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
       </div>
       <div class="col-md-6">
         <h3>HEAD</h3>
         <div class="form-group">
-          <label for="url">URL</label>
-          <input class="form-control" type="text" id="url">
+          <label for="head">URL</label>
+          <input class="form-control" type="text" id="head">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </div>
       <div class="col-md-6">
         <h3>DELETE</h3>
         <div class="form-group">
-          <label for="url">URL</label>
-          <input class="form-control" type="text" id="url">
+          <label for="delete">URL</label>
+          <input class="form-control" type="text" id="delete">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </div>
       <div class="col-md-6">
         <h3>POST</h3>
         <div class="form-group">
-          <label for="url">URL</label>
-          <input class="form-control" type="text" id="url">
+          <label for="post">URL</label>
+          <input class="form-control" type="text" id="post">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </div>
       <div class="col-md-6">
         <h3>PUT</h3>
         <div class="form-group">
-          <label for="url">URL</label>
-          <input class="form-control" type="text" id="url">
+          <label for="put">URL</label>
+          <input class="form-control" type="text" id="put">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </div>
       <div class="col-md-6">
         <h3>PATCH</h3>
         <div class="form-group">
-          <label for="url">URL</label>
-          <input class="form-control" type="text" id="url">
+          <label for="patch">URL</label>
+          <input class="form-control" type="text" id="patch">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3>OUTPUT</h3>
+        <textarea name="output" id="" cols="100" rows="10"></textarea>
+      </div>
+    </div>
   </div>
+  <script>
+    document.addEventListener('click', function(e) {
+      if(e.target && e.target.nodeName == 'BUTTON') {
+        var input = e.target.parentElement.querySelector('input');
+        var method = input.id;
+
+        wobbuffetch[method](input.value).flatMap(res => res).subscribe(res => console.log(res))
+      }
+    })
+  </script>
 </body>
 </html>
