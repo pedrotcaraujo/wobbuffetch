@@ -13,7 +13,10 @@ const wobbuffetch = function (config) {
 wobbuffetch.defaults = defaults
 
 METHODS.forEach((method) => {
-  wobbuffetch[method] = (url, config) => observableRequest(url, method, { ...wobbuffetch.defaults, ...config })
+  Object.defineProperty(wobbuffetch, method, {
+    value: (url, config) => observableRequest(url, method, { ...wobbuffetch.defaults, ...config }),
+    writable: false
+  })
 })
 
 module.exports = wobbuffetch
