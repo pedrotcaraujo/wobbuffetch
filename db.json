@@ -1,14 +1,14 @@
 {
   "posts": [
-    {
+{
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "FRP for life",
+      "author": "anonymous"
     },
     {
       "id": 2,
-      "title": "request-test",
-      "author": "Pedro"
+      "title": "Imperative programming from hell",
+      "author": "Demo"
     }
   ],
   "comments": [

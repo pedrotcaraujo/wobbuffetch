@@ -11,3 +11,56 @@ Reactive wrapper for HTTP requests using Fetch API
 ## Why
 
 Handle asynchronous and event-based programs are boring. Sometimes we need to manipulate data loaded from the some server getting only what we need, merge, debounce, distinct and so on. Wobbuffetch is a reactive  http library that wrap Fetch API along with a set of observable collections that make your life easier.
+
+## Features
+
+- Easy to use
+- Fetch API features
+- Observable api collections
+- Automatic transforms for JSON data
+- Runs from browser and server
+
+## Installing
+
+Via npm:
+```bash
+$ npm install wobbuffetch
+```
+
+Via cdn:
+```html
+<script src="https://unpkg.com/wobbuffetch/dist/wobbuffetch.min.js"></script>
+```
+
+## How to use
+
+```js
+import wfetch from 'wobbuffetch';
+
+/* api data posts
+"posts": [
+    {
+      "id": 1,
+      "title": "FRP for life",
+      "author": "anonymous"
+    },
+    {
+      "id": 2,
+      "title": "Imperative programming from hell",
+      "author": "Demo"
+    }
+  ]
+*/
+
+wfetch.get('/api/posts').flatMap(res => res.data).first().subscribe(post => console.log(post))
+
+/* response:
+{
+  data: {id: 1, title: "FRP for life", author: "anonymous"},
+  status: 200,
+  statusText: 'Ok',
+  headers: { Content-Type: application/json },
+}
+*/
+```
+
