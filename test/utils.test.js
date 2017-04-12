@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import { isObject, isFunction } from '../src/utils'
 
 describe('#utils', () => {
-  describe('#isObject', () => {
+  describe('isObject', () => {
     it('should be defined', () => {
       expect(isObject).to.not.be.undefined
     })
@@ -22,7 +22,7 @@ describe('#utils', () => {
       expect(isObject(null)).to.be.false
     })
   })
-  describe('#isFuncion', () => {
+  describe('isFuncion', () => {
     it('should be a function', () => {
       expect(isFunction).to.not.be.undefined
     })
