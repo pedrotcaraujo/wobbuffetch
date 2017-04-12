@@ -40,47 +40,44 @@ describe('#wobbuffetch', () => {
   it('should has a PATCH method', () => {
     expect(wfetch.patch).to.be.a('function')
   })
-  describe('GET', () => {
-    it('should return an object with subscribe function', () => {
-      expect(wfetch.get('http://something').subscribe).to.be.an('function')
-    })
-    it('should test response', (done) => {
-      wfetch.get('http://something').subscribe(res => {
-        expect(res.status).to.be.equal(200)
-        expect(res.statusText).to.be.equal('OK')
-        expect(res.headers).to.be.instanceof(Headers)
-        expect(res.data).to.deep.equal(data)
-        done()
-      })
-    })
-    it('should test config param', () => {
-      wfetch.get('http://something', { params: data })
-      expect(fetchMock.lastUrl()).to.be.equal('http://something?hello=world')
+  it('should call with config param', () => {
+    wfetch.get('http://something', { params: data })
+    expect(fetchMock.lastUrl()).to.be.equal('http://something?hello=world')
+  })
+  it('should GET return Observable', () => {
+    expect(wfetch.get('http://something').subscribe).to.be.an('function')
+  })
+  it('should test GET response', (done) => {
+    wfetch.get('http://something').subscribe(res => {
+      expect(res.status).to.be.equal(200)
+      expect(res.statusText).to.be.equal('OK')
+      expect(res.headers).to.be.instanceof(Headers)
+      expect(res.data).to.deep.equal(data)
+      done()
     })
   })
-  // describe('HEAD', () => {
-  //   it('should return an object with subscribe function', () => {
-  //     expect(wfetch.head('http://something').subscribe).to.be.an('function')
-  //   })
-  // })
-  // describe('DELETE', () => {
-  //   it('should return an object with subscribe function', () => {
-  //     expect(wfetch.delete('http://something').subscribe).to.be.an('function')
-  //   })
-  // })
-  // describe('POST', () => {
-  //   it('should return an object with subscribe function', () => {
-  //     expect(wfetch.post('http://something').subscribe).to.be.an('function')
-  //   })
-  // })
-  // describe('PUT', () => {
-  //   it('should return an object with subscribe function', () => {
-  //     expect(wfetch.put('http://something').subscribe).to.be.an('function')
-  //   })
-  // })
-  // describe('PATCH', () => {
-  //   it('should return an object with subscribe function', () => {
-  //     expect(wfetch.patch('http://something').subscribe).to.be.an('function')
-  //   })
-  // })
+  it('should HEAD return Observable', () => {
+    expect(wfetch.head('http://something').subscribe).to.be.an('function')
+  })
+  it('should HEAD not return data', (done) => {
+    wfetch.head('http://something').subscribe(res => {
+      expect(res.status).to.be.equal(200)
+      expect(res.statusText).to.be.equal('OK')
+      expect(res.headers).to.be.instanceof(Headers)
+      expect(res.data).to.be.undefined
+      done()
+    })
+  })
+  it('should DELETE return Observable', () => {
+    expect(wfetch.delete('http://something').subscribe).to.be.an('function')
+  })
+  it('should POST return Observable', () => {
+    expect(wfetch.post('http://something').subscribe).to.be.an('function')
+  })
+  it('should PUT return Observable', () => {
+    expect(wfetch.put('http://something').subscribe).to.be.an('function')
+  })
+  it('should PATCH return Observable', () => {
+    expect(wfetch.patch('http://something').subscribe).to.be.an('function')
+  })
 })
