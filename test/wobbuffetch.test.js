@@ -59,7 +59,7 @@ describe('#wobbuffetch', () => {
   it('should HEAD return Observable', () => {
     expect(wfetch.head('http://something').subscribe).to.be.an('function')
   })
-  it('should HEAD not return data', (done) => {
+  it('should HEAD return response without data', (done) => {
     wfetch.head('http://something').subscribe(res => {
       expect(res.status).to.be.equal(200)
       expect(res.statusText).to.be.equal('OK')
@@ -71,13 +71,45 @@ describe('#wobbuffetch', () => {
   it('should DELETE return Observable', () => {
     expect(wfetch.delete('http://something').subscribe).to.be.an('function')
   })
+  it('should DELETE return response', (done) => {
+    wfetch.delete('http://something').subscribe(res => {
+      expect(res.status).to.be.equal(200)
+      expect(res.statusText).to.be.equal('OK')
+      expect(res.headers).to.be.instanceof(Headers)
+      done()
+    })
+  })
   it('should POST return Observable', () => {
     expect(wfetch.post('http://something').subscribe).to.be.an('function')
+  })
+  it('should POST return response', (done) => {
+    wfetch.post('http://something').subscribe(res => {
+      expect(res.status).to.be.equal(200)
+      expect(res.statusText).to.be.equal('OK')
+      expect(res.headers).to.be.instanceof(Headers)
+      done()
+    })
   })
   it('should PUT return Observable', () => {
     expect(wfetch.put('http://something').subscribe).to.be.an('function')
   })
+  it('should PUT return response', (done) => {
+    wfetch.put('http://something').subscribe(res => {
+      expect(res.status).to.be.equal(200)
+      expect(res.statusText).to.be.equal('OK')
+      expect(res.headers).to.be.instanceof(Headers)
+      done()
+    })
+  })
   it('should PATCH return Observable', () => {
     expect(wfetch.patch('http://something').subscribe).to.be.an('function')
+  })
+  it('should PATCH return response', (done) => {
+    wfetch.patch('http://something').subscribe(res => {
+      expect(res.status).to.be.equal(200)
+      expect(res.statusText).to.be.equal('OK')
+      expect(res.headers).to.be.instanceof(Headers)
+      done()
+    })
   })
 })

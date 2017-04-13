@@ -1,11 +1,11 @@
 
-function isMethodHEAD (method) {
+function _isMethodHEAD (method) {
   return method !== 'head'
 }
 
 export default (method, response, type = 'json') => {
   const { status, statusText, headers } = response
-  if (isMethodHEAD(method)) {
+  if (_isMethodHEAD(method)) {
     return response[type]().then(data => ({ status, statusText, headers, data }))
   }
 

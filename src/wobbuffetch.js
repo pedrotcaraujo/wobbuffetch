@@ -1,13 +1,20 @@
+import includes from 'array-includes'
+import { isObject } from './utils'
 import defaults from './defaults'
 import observableRequest from './observableRequest'
 
 const METHODS = ['get', 'head', 'delete', 'post', 'put', 'patch']
 
+function _resolveConfig (config) {
+  if (!isObject(config)) { throw Error(`wobbuffetch parameter is not a object`) }
+  if (!config.url) { throw Error(`wobbuffetch: URL is required`) }
+  if (config.method && !includes(METHODS, config.method.toLowerCase())) { throw Error(`wobbuffetch: : this '${config.method}' method does not supported`) }
+}
+
 const wobbuffetch = function (config) {
-  if (typeof config === 'object') {
-    const {url, method} = config
-    return observableRequest(url, method, { ...wobbuffetch.defaults, ...config })
-  }
+  _resolveConfig(config)
+  const { url, method } = config
+  return observableRequest(url, method, { ...wobbuffetch.defaults, ...config })
 }
 
 wobbuffetch.defaults = defaults
