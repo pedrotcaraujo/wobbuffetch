@@ -1,23 +1,27 @@
-export function isObject (val) {
-  return val !== null && typeof val === 'object'
+export function isObject (data) {
+  return data !== null && typeof data === 'object'
 }
 
-export function isFunction (val) {
-  return typeof val === 'function'
+export function isFunction (data) {
+  return typeof data === 'function'
 }
 
-export function isFormData (val) {
-  return (typeof FormData !== 'undefined') && (val instanceof FormData)
+export function isString (data) {
+  return typeof data === 'string'
 }
 
-export function isFile (val) {
-  return (typeof File !== 'undefined') && (val instanceof File)
+export function isFormData (data) {
+  return (typeof FormData !== 'undefined') && (data instanceof FormData)
 }
 
-export function isBlob (val) {
-  return (typeof Blob !== 'undefined') && (val instanceof Blob)
+export function isBlob (data) {
+  return (typeof Blob !== 'undefined') && (data instanceof Blob)
 }
 
-export function isStream (val) {
-  return isObject(val) && isFunction(val.pipe)
+export function isArrayBuffer (data) {
+  return (typeof ArrayBuffer !== 'undefined') && (data instanceof ArrayBuffer)
+}
+
+export function isURLSearchParams (data) {
+  return (typeof URLSearchParams !== 'undefined') && (data instanceof URLSearchParams)
 }

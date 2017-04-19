@@ -90,6 +90,17 @@ describe('#wobbuffetch', () => {
       done()
     })
   })
+  it('should POST data', (done) => {
+    const body = { 'body': 'builder' }
+    wfetch.post('http://something', { data: body }).subscribe(res => {
+      expect(res.status).to.be.equal(200)
+      expect(res.statusText).to.be.equal('OK')
+      expect(res.headers).to.be.instanceof(Headers)
+      expect(fetchMock.lastOptions().method).to.be.equals('post')
+      expect(JSON.parse(fetchMock.lastOptions().body)).to.deep.equal(body)
+      done()
+    })
+  })
   it('should PUT return Observable', () => {
     expect(wfetch.put('http://something').subscribe).to.be.an('function')
   })
@@ -101,6 +112,17 @@ describe('#wobbuffetch', () => {
       done()
     })
   })
+  it('should PUT data', (done) => {
+    const body = { 'body': 'builder' }
+    wfetch.put('http://something', { data: body }).subscribe(res => {
+      expect(res.status).to.be.equal(200)
+      expect(res.statusText).to.be.equal('OK')
+      expect(res.headers).to.be.instanceof(Headers)
+      expect(fetchMock.lastOptions().method).to.be.equals('put')
+      expect(JSON.parse(fetchMock.lastOptions().body)).to.deep.equal(body)
+      done()
+    })
+  })
   it('should PATCH return Observable', () => {
     expect(wfetch.patch('http://something').subscribe).to.be.an('function')
   })
@@ -109,6 +131,17 @@ describe('#wobbuffetch', () => {
       expect(res.status).to.be.equal(200)
       expect(res.statusText).to.be.equal('OK')
       expect(res.headers).to.be.instanceof(Headers)
+      done()
+    })
+  })
+  it('should PATCH data', (done) => {
+    const body = { 'body': 'builder' }
+    wfetch.patch('http://something', { data: body }).subscribe(res => {
+      expect(res.status).to.be.equal(200)
+      expect(res.statusText).to.be.equal('OK')
+      expect(res.headers).to.be.instanceof(Headers)
+      expect(fetchMock.lastOptions().method).to.be.equals('patch')
+      expect(JSON.parse(fetchMock.lastOptions().body)).to.deep.equal(body)
       done()
     })
   })
