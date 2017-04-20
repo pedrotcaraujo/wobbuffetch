@@ -1,19 +1,7 @@
 
-import {
-  isObject,
-  isFormData,
-  isArrayBuffer,
-  isURLSearchParams,
-  isString,
-  isBlob } from '../utils'
-
-function _isStandardData (data) {
-  return isFormData(data) || isString(data) || isBlob(data) || isArrayBuffer(data) || isURLSearchParams(data)
-}
+import { isObject } from '../utils'
 
 export default data => {
-  if (_isStandardData(data)) { return data }
   if (isObject(data)) { return JSON.stringify(data) }
-
   return data
 }

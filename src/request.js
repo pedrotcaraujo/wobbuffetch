@@ -9,6 +9,7 @@ import transformData from './helpers/transformData'
 
 function request (method, url, config) {
   const { fetchConfig, wfetchConfig } = splitConfig(config)
+
   const builtURL = buildURL(wfetchConfig.baseUrl, url, wfetchConfig.params)
   const body = transformData(wfetchConfig.data)
 
