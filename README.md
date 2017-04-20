@@ -52,7 +52,7 @@ import wfetch from 'wobbuffetch';
   ]
 */
 
-wfetch.get('/api/posts').subscribe(res => console.log(res))
+wfetch.get('http://mydomain/api/posts').subscribe(res => console.log(res))
 
 /* response:
 {
@@ -66,7 +66,7 @@ wfetch.get('/api/posts').subscribe(res => console.log(res))
 }
 */
 
-wfetch.get('/api/posts').flatMap(res => res.data).subscribe(post => console.log(post))
+wfetch.get('http://mydomain/api/posts').flatMap(res => res.data).subscribe(post => console.log(post))
 
 /* response with flatMap:
   { "id": 1, "title": "FRP for life", "author": "anonymous" },
