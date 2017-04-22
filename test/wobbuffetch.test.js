@@ -40,6 +40,21 @@ describe('#wobbuffetch', () => {
   it('should has a PATCH method', () => {
     expect(wfetch.patch).to.be.a('function')
   })
+  it('should call with the instance wobbuffetch', () => {
+    expect(wfetch({ url: 'http://something' }).subscribe).to.be.an('function')
+  })
+  it('should call with the instance wobbuffetch other method', () => {
+    expect(wfetch({ url: 'http://something', method: 'post' }).subscribe).to.be.an('function')
+  })
+  it('should throw Object error', () => {
+    expect(() => { wfetch() }).to.throw('wobbuffetch config is not present or is not an object')
+  })
+  it('should throw URL error', () => {
+    expect(() => { wfetch({}) }).to.throw('wobbuffetch: URL is required')
+  })
+  it('should throw method error', () => {
+    expect(() => { wfetch({ url: 'http://something', method: 'options' }) }).to.throw('wobbuffetch: : this \'options\' method does not supported')
+  })
   it('should call with config param', () => {
     wfetch.get('http://something', { params: data })
     expect(fetchMock.lastUrl()).to.be.equal('http://something?hello=world')
