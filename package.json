@@ -2,11 +2,16 @@
   "name": "wobbuffetch",
   "version": "0.0.1",
   "description": "Reactive wrapper for Fetch API",
-  "main": "wobbuffetch.js",
+  "main": "dist/wobbuffetch.js",
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha --reporter spec",
-    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*",
-    "lint": "node_modules/.bin/eslint ./src ./test"
+    "start": "webpack-dev-server --content-base ./ --output-filename wobbuffetch.js",
+    "api": "json-server db.json",
+    "test": "mocha --compilers js:babel-register",
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-core/register --colors --reporter spec test/",
+    "lint": "eslint ./src ./test",
+    "build": "npm-run-all --parallel build:*",
+    "build:umd": "webpack --output-filename wobbuffetch.js --colors",
+    "build:umd.min": "webpack --output-filename wobbuffetch.min.js -p --colors"
   },
   "repository": {
     "type": "git",
@@ -26,13 +31,29 @@
   },
   "homepage": "https://github.com/pedrotcaraujo/wobbuffetch#readme",
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.22.0",
     "chai": "^3.5.0",
     "coveralls": "^2.11.15",
     "eslint": "^3.11.1",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.2.0"
+    "fetch-mock": "^5.9.4",
+    "istanbul": "^1.0.0-alpha.2",
+    "json-server": "^0.9.4",
+    "mocha": "^3.2.0",
+    "npm-run-all": "^4.0.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "dependencies": {
+    "array-includes": "^3.0.2",
+    "es6-promise": "^4.0.5",
+    "isomorphic-fetch": "^2.2.1",
+    "query-params": "0.0.1",
+    "rx": "^4.1.0"
   }
 }
