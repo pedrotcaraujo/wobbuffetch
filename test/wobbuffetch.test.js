@@ -4,13 +4,6 @@ import wfetch from '../src/wobbuffetch'
 
 const data = { hello: 'world' }
 
-    // fetchMock.get('*', data)
-    // fetchMock.head('*', data)
-    // fetchMock.delete('*', data)
-    // fetchMock.post('*', data)
-    // fetchMock.put('*', data)
-    // fetchMock.patch('*', data)
-
 describe('#wobbuffetch', () => {
   afterEach(() => {
     fetchMock.restore()
