@@ -13,9 +13,9 @@ describe('#parseResponse', () => {
     const data = 'hello'
     const response = new Response(data, { status: 200 })
     parseResponse('get', response, 'text').then(res => {
-        expect(res.data).to.be.a('string')
-        expect(res.data).to.be.equals(data)
-        done()
+      expect(res.data).to.be.a('string')
+      expect(res.data).to.be.equals(data)
+      done()
     })
   })
 })
