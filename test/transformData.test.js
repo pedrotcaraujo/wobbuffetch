@@ -4,7 +4,6 @@ import 'url-search-params-polyfill'
 import { expect } from 'chai'
 import transformData from '../src/helpers/transformData'
 
-
 describe('#transformData', () => {
   it('should be a function', () => {
     expect(transformData).to.be.a('function')
