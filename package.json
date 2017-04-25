@@ -9,6 +9,7 @@
     "test": "mocha --compilers js:babel-register",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-core/register --colors --reporter spec test/",
     "lint": "eslint ./src ./test",
+    "prebuild": "npm run lint && npm run cover",
     "build": "npm-run-all --parallel build:*",
     "build:umd": "webpack --output-filename wobbuffetch.js --colors",
     "build:umd.min": "webpack --output-filename wobbuffetch.min.js -p --colors"
