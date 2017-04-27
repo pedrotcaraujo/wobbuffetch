@@ -195,6 +195,24 @@ describe('#wobbuffetch', () => {
     it('should throw method error', () => {
       expect(() => { wfetch({ url: 'http://something', method: 'options' }) }).to.throw('wobbuffetch: : this \'options\' method does not supported')
     })
+    it('should GET throw URL error', () => {
+      expect(() => { wfetch.get() }).to.throw('wobbuffetch: URL is required')
+    })
+    it('should HEAD throw URL error', () => {
+      expect(() => { wfetch.head() }).to.throw('wobbuffetch: URL is required')
+    })
+    it('should DELETE throw URL error', () => {
+      expect(() => { wfetch.delete() }).to.throw('wobbuffetch: URL is required')
+    })
+    it('should POST throw URL error', () => {
+      expect(() => { wfetch.post() }).to.throw('wobbuffetch: URL is required')
+    })
+    it('should PUT throw URL error', () => {
+      expect(() => { wfetch.put() }).to.throw('wobbuffetch: URL is required')
+    })
+    it('should PATCH throw URL error', () => {
+      expect(() => { wfetch.patch() }).to.throw('wobbuffetch: URL is required')
+    })
     it('should catch status', (done) => {
       wfetch({ url: 'http://nothing' }).subscribe(res => {}, err => {
         expect(err).to.be.instanceOf(Error)
