@@ -15,8 +15,8 @@ Handle asynchronous and event-based programs are boring. Sometimes we need to ma
 ## Features
 
 - Easy to use
-- Fetch API features
-- Observable api collections
+- [Fetch API](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch) features
+- Observable api collections ([RxJS](http://reactivex.io/))
 - Automatic transforms for JSON data
 - Runs from browser and server
 
@@ -34,6 +34,7 @@ Via cdn:
 
 ## How to use
 
+GET example:
 ```js
 import wfetch from 'wobbuffetch';
 
@@ -73,4 +74,77 @@ wfetch.get('http://mydomain/api/posts').flatMap(res => res.data).subscribe(post 
   { "id": 2, "title": "Imperative programming from hell", "author": "Demo" }
 */
 ```
+
+POST example:
+```js
+
+wfetch.post('http://mydomain/api/posts' { 
+  data: {
+    title: 'How to Reactive js works',
+    author: 'you'
+  }}).subscribe(res => console.log(res))
+
+/* response:
+{
+  data: { "id": 3, "title": "How to wobbuffetch js works", "author": "you" },
+  status: 200,
+  statusText: 'Ok',
+  headers: { Content-Type: application/json },
+}
+*/
+
+wfetch.post('http://mydomain/api/posts' { 
+  data: {
+    title: 'Wobbuffetch js is handy',
+    author: 'me'
+  }}).map(res => res.data.title).subscribe(title => console.log(title))
+
+/* response with map:
+  'Wobbuffetch js is handy'
+*/
+```
+
+Error handling
+
+```js
+
+function _success(response) {
+  console.log(`Success: ${response.status}`)
+}
+
+function _error({ response }) {
+  console.log(`Error: ${response.status}`)
+}
+
+
+wfetch.get('http://mydomain/api/posts/30').subscribe(_success, _error)
+
+/* response Error:
+  'Error: 404'
+*/
+
+```
+
+To understand more see [RxJS from promise](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/frompromise.md).
+
+## Default configurations
+
+We need frequently set some of request options, but some of them are defaults in wobbuffetch library. For more information and options we might consult [Fetch API options](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch).
+
+An important change in Fetch API is that the option `body` now is `data` in wobbuffetch.
+
+```js
+{
+  baseUrl: '',
+  headers: { 'Content-Type': 'application/json' },
+  credentials: 'same-origin', // Fetch API: Only send cookies if the URL is on the same origin as the calling script.
+  cache: 'default',  // Fetch API:  The browser looks for a matching request in its HTTP cache.
+  responseType: 'json', // Methods to extract a body on response (ex: 'arrayBuffer', 'blob', 'json', 'text')
+  // Defines if the response will be resolved or reject given a status.
+  validateStatus: function (status) { 
+    return status >= 200 && status < 300
+  }
+}
+```
+
 
