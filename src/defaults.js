@@ -1,5 +1,5 @@
-export default {
-  baseUrl: '',
+export default Object.seal({
+  baseURL: '',
   headers: { 'Content-Type': 'application/json' },
   credentials: 'same-origin',
   cache: 'default',
@@ -7,4 +7,4 @@ export default {
   validateStatus: function (status) {
     return status >= 200 && status < 300
   }
-}
+})

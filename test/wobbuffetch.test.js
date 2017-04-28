@@ -182,6 +182,24 @@ describe('#wobbuffetch', () => {
       })
     })
   })
+  describe('DEFAULTS', () => {
+    beforeEach(() => {
+      fetchMock.get('*', data)
+    })
+    it('should defaults to be object', () => {
+      expect(wfetch.defaults).to.be.an('object')
+    })
+    it('should defaults object to be sealed', () => {
+      expect(wfetch.defaults).to.be.sealed
+    })
+    it('should defaults object to be sealed', (done) => {
+      wfetch.defaults.baseURL = 'http://something'
+      wfetch.get('/hello').subscribe((res) => {
+        expect(fetchMock.lastUrl()).to.be.equals('http://something/hello?')
+        done()
+      })
+    })
+  })
   describe('Error treatment', () => {
     beforeEach(() => {
       fetchMock.get('http://something', 200).catch(503)

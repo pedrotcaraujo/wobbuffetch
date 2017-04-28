@@ -15,7 +15,8 @@ wobbuffetch.defaults = defaults
 methods.forEach((method) => {
   Object.defineProperty(wobbuffetch, method, {
     value: (url, config) => observableRequest(url, method, { ...wobbuffetch.defaults, ...config }),
-    writable: false
+    writable: false,
+    configurable: false
   })
 })
 
