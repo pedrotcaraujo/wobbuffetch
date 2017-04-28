@@ -53,7 +53,7 @@ import wfetch from 'wobbuffetch';
   ]
 */
 
-wfetch.get('http://mydomain/api/posts').subscribe(res => console.log(res))
+wfetch.get('http://api.mydomain.com/posts').subscribe(res => console.log(res))
 
 /* response:
 {
@@ -67,7 +67,7 @@ wfetch.get('http://mydomain/api/posts').subscribe(res => console.log(res))
 }
 */
 
-wfetch.get('http://mydomain/api/posts').flatMap(res => res.data).subscribe(post => console.log(post))
+wfetch.get('http://api.mydomain.com/posts').flatMap(res => res.data).subscribe(post => console.log(post))
 
 /* response with flatMap:
   { "id": 1, "title": "FRP for life", "author": "anonymous" },
@@ -78,7 +78,7 @@ wfetch.get('http://mydomain/api/posts').flatMap(res => res.data).subscribe(post 
 POST example:
 ```js
 
-wfetch.post('http://mydomain/api/posts' { 
+wfetch.post('http://api.mydomain.com/posts' { 
   data: {
     title: 'How to Reactive js works',
     author: 'you'
@@ -93,7 +93,7 @@ wfetch.post('http://mydomain/api/posts' {
 }
 */
 
-wfetch.post('http://mydomain/api/posts' { 
+wfetch.post('http://api.mydomain.com/posts' { 
   data: {
     title: 'Wobbuffetch js is handy',
     author: 'me'
@@ -104,7 +104,7 @@ wfetch.post('http://mydomain/api/posts' {
 */
 ```
 
-Error handling
+Error handling:
 
 ```js
 
@@ -127,16 +127,16 @@ wfetch.get('http://mydomain/api/posts/30').subscribe(_success, _error)
 
 To understand more see [RxJS from promise](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/frompromise.md).
 
-## Default configurations
+### Default configurations
 
-We need frequently set some of request options, but some of them are defaults in wobbuffetch library. For more information and options we might consult [Fetch API options](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch).
+We need frequently set some of request options, but some of them are defaults in wobbuffetch library. For more information and options we might consult [Fetch API options](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch).
 
 An important change in Fetch API is that the option `body` now is `data` in wobbuffetch.
 
 ```js
 {
-  baseUrl: '',
-  headers: { 'Content-Type': 'application/json' },
+  baseUrl: '', // Base URL to use in every request
+  headers: { 'Content-Type': 'application/json' }, // Fetch API:  Object literal as headers
   credentials: 'same-origin', // Fetch API: Only send cookies if the URL is on the same origin as the calling script.
   cache: 'default',  // Fetch API:  The browser looks for a matching request in its HTTP cache.
   responseType: 'json', // Methods to extract a body on response (ex: 'arrayBuffer', 'blob', 'json', 'text')
@@ -147,4 +147,95 @@ An important change in Fetch API is that the option `body` now is `data` in wobb
 }
 ```
 
+Config default:
 
+```js
+import wfetch from 'wobbuffetch';
+
+wfetch.defaults.baseURL = 'http://api.mydomain.com'
+wfetch.defaults.headers = { 'Content-Type': 'text/xml' }
+wfetch.defaults.responseType = 'text'
+
+```
+### Response schema
+
+```js
+{ 
+	status: 200, // HTTP status code from server
+	statusText: 'OK', // HTTP status message from the server
+	headers: {}, // Headers from the server
+	data: {}, // Response data requested from the server ( 'HEAD' method does not receive this)
+}
+```
+
+
+### Methods
+
+Instance methods: __wobbuffetch#method(url[, config])__
+
+#### GET
+```js
+wobbuffetch.get('http://api.mydomain.com/posts').subscribe(res => {
+	// Do something ...
+})
+```
+with params:
+```js
+wobbuffetch.get('http://api.mydomain.com/posts', { // http://api.mydomain.com/posts?title=you
+	params: { title: 'you' }
+}).subscribe(res => {
+	// Do something ...
+})
+```
+#### HEAD
+```js
+// Method 'head' has no 'data'
+wobbuffetch.head('http://api.mydomain.com/posts').subscribe(res => {
+	console.log(res.data) // undefined
+})
+```
+#### DELETE
+```js
+wobbuffetch.delete('http://api.mydomain.com/posts/1').subscribe(res => {
+	// Do something ...
+})
+```
+#### POST
+```js
+// Wobbuffetch there is no options 'body' anymore, use 'data' instead
+wobbuffetch.post('http://api.mydomain.com/posts', {
+	data: { // It can receives object literal now
+		title: 'something',
+		author: 'unknown'
+	}
+}).subscribe(res => {
+	// Do something ...
+})
+```
+#### PUT
+```js
+// Wobbuffetch there is no options 'body' anymore, use 'data' instead
+wobbuffetch.post('http://api.mydomain.com/posts', {
+	data: { // It can receives object literal now
+		title: 'something',
+		author: 'unknown'
+	}
+}).subscribe(res => {
+	// Do something ...
+})
+```
+#### PATCH
+```js
+// Wobbuffetch there is no options 'body' anymore, use 'data' instead
+wobbuffetch.post('http://api.mydomain.com/posts', {
+	data: { // It can receives object literal now
+		title: 'something',
+		author: 'unknown'
+	}
+}).subscribe(res => {
+	// Do something ...
+})
+```
+
+## by
+[@pedrotcaraujo](https://twitter.com/pedrotcaraujo)
