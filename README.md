@@ -20,6 +20,12 @@ Handle asynchronous and event-based programs are boring. Sometimes we need to ma
 - Automatic transforms for JSON data
 - Runs from browser and server
 
+## Learn
+
+- About Fetch API: [Using Fetch MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch), [fetch API - david walsh](https://davidwalsh.name/fetch) 
+- About ReactiveX: [RxJS Doc](http://reactivex.io/rxjs/), [RxJS Github](https://github.com/Reactive-Extensions/RxJS)
+- __See the Observable super power in [RX Marbles - Interactive diagrams](http://rxmarbles.com/)__
+
 ## Installing
 
 Via npm:
