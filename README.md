@@ -137,7 +137,7 @@ To understand more see [RxJS from promise](https://github.com/Reactive-Extension
 
 We need frequently set some of request options, but some of them are defaults in wobbuffetch library. For more information and options we might consult [Fetch API options](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch).
 
-An important change in Fetch API is that the option `body` now is `data` in wobbuffetch.
+An important change in Fetch API is that the option `body` is now `data` in wobbuffetch.
 
 ```js
 {
