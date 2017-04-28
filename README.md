@@ -215,7 +215,7 @@ wobbuffetch.post('http://api.mydomain.com/posts', {
 #### PUT
 ```js
 // Wobbuffetch there is no options 'body' anymore, use 'data' instead
-wobbuffetch.post('http://api.mydomain.com/posts', {
+wobbuffetch.put('http://api.mydomain.com/posts', {
 	data: { // It can receives object literal now
 		title: 'something',
 		author: 'unknown'
@@ -227,7 +227,7 @@ wobbuffetch.post('http://api.mydomain.com/posts', {
 #### PATCH
 ```js
 // Wobbuffetch there is no options 'body' anymore, use 'data' instead
-wobbuffetch.post('http://api.mydomain.com/posts', {
+wobbuffetch.patch('http://api.mydomain.com/posts', {
 	data: { // It can receives object literal now
 		title: 'something',
 		author: 'unknown'
