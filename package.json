@@ -1,6 +1,6 @@
 {
   "name": "wobbuffetch",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Reactive wrapper for Fetch API",
   "main": "dist/wobbuffetch.js",
   "scripts": {
