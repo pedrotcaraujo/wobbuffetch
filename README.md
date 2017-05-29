@@ -10,7 +10,7 @@ Reactive wrapper for HTTP requests using Fetch API
 
 ## Why
 
-Handle asynchronous and event-based programs are boring. Sometimes we need to manipulate data loaded from the some server getting only what we need, merge, debounce, distinct and so on. Wobbuffetch is a reactive  http library that wrap Fetch API along with a set of observable collections that make your life easier.
+Handling asynchronous and event-based requests is boring. Sometimes we need to manipulate data loaded from a server with only what we need, merge, debounce, distinct and so on. Wobbuffetch is a reactive  http library that wraps Fetch API along with a set of observable collections that make your life easier.
 
 ## Features
 
@@ -22,7 +22,7 @@ Handle asynchronous and event-based programs are boring. Sometimes we need to ma
 
 ## Learn
 
-- About Fetch API: [Using Fetch MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch), [fetch API - david walsh](https://davidwalsh.name/fetch) 
+- About Fetch API: [Using Fetch MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch), [fetch API - david walsh](https://davidwalsh.name/fetch)
 - About ReactiveX: [RxJS Doc](http://reactivex.io/rxjs/), [RxJS Github](https://github.com/Reactive-Extensions/RxJS)
 - __See the Observable super power in [RX Marbles - Interactive diagrams](http://rxmarbles.com/)__
 
@@ -84,22 +84,22 @@ wfetch.get('http://api.mydomain.com/posts').flatMap(res => res.data).subscribe(p
 POST example:
 ```js
 
-wfetch.post('http://api.mydomain.com/posts' { 
+wfetch.post('http://api.mydomain.com/posts' {
   data: {
-    title: 'How to Reactive js works',
-    author: 'you'
+    title: 'How Reactive js works',
+    author: 'You'
   }}).subscribe(res => console.log(res))
 
 /* response:
 {
-  data: { "id": 3, "title": "How to wobbuffetch js works", "author": "you" },
+  data: { "id": 3, "title": "How wobbuffetch js works", "author": "You" },
   status: 200,
   statusText: 'Ok',
   headers: { Content-Type: application/json },
 }
 */
 
-wfetch.post('http://api.mydomain.com/posts' { 
+wfetch.post('http://api.mydomain.com/posts' {
   data: {
     title: 'Wobbuffetch js is handy',
     author: 'me'
@@ -131,11 +131,11 @@ wfetch.get('http://mydomain/api/posts/30').subscribe(_success, _error)
 
 ```
 
-To understand more see [RxJS from promise](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/frompromise.md).
+To learn more see [RxJS from promise](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/frompromise.md).
 
-### Default configurations
+### Default configuration
 
-We need frequently set some of request options, but some of them are defaults in wobbuffetch library. For more information and options we might consult [Fetch API options](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch).
+We often need to set additional request options, but some of them are default in the wobbuffetch library. For more information and options check out [Fetch API options](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch).
 
 An important change in Fetch API is that the option `body` is now `data` in wobbuffetch.
 
@@ -143,11 +143,11 @@ An important change in Fetch API is that the option `body` is now `data` in wobb
 {
   baseUrl: '', // Base URL to use in every request
   headers: { 'Content-Type': 'application/json' }, // Fetch API:  Object literal as headers
-  credentials: 'same-origin', // Fetch API: Only send cookies if the URL is on the same origin as the calling script.
+  credentials: 'same-origin', // Fetch API: Only send cookies if the URL is from the same origin as the calling script.
   cache: 'default',  // Fetch API:  The browser looks for a matching request in its HTTP cache.
-  responseType: 'json', // Methods to extract a body on response (ex: 'arrayBuffer', 'blob', 'json', 'text')
-  // Defines if the response will be resolved or reject given a status.
-  validateStatus: function (status) { 
+  responseType: 'json', // Methods to extract the body from the response (ex: 'arrayBuffer', 'blob', 'json', 'text')
+  // Defines if the response will be resolved or rejected given a status.
+  validateStatus: function (status) {
     return status >= 200 && status < 300
   }
 }
@@ -166,8 +166,8 @@ wfetch.defaults.responseType = 'text'
 ### Response schema
 
 ```js
-{ 
-	status: 200, // HTTP status code from server
+{
+	status: 200, // HTTP status code from the server
 	statusText: 'OK', // HTTP status message from the server
 	headers: {}, // Headers from the server
 	data: {}, // Response data requested from the server ( 'HEAD' method does not receive this)
@@ -220,9 +220,9 @@ wobbuffetch.post('http://api.mydomain.com/posts', {
 ```
 #### PUT
 ```js
-// Wobbuffetch there is no options 'body' anymore, use 'data' instead
+// Wobbuffetch has no option 'body' anymore, use 'data' instead
 wobbuffetch.put('http://api.mydomain.com/posts', {
-	data: { // It can receives object literal now
+	data: { // It can receive object literals now
 		title: 'something',
 		author: 'unknown'
 	}
@@ -232,7 +232,7 @@ wobbuffetch.put('http://api.mydomain.com/posts', {
 ```
 #### PATCH
 ```js
-// Wobbuffetch there is no options 'body' anymore, use 'data' instead
+// Wobbuffetch has no option 'body' anymore, use 'data' instead
 wobbuffetch.patch('http://api.mydomain.com/posts', {
 	data: { // It can receives object literal now
 		title: 'something',
